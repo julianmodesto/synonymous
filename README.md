@@ -6,6 +6,19 @@ I initially started looking for an API to use as my thesaurus to lookup synonyms
 ### Data Structure
 The raw data is in the file th_en_US_v2.dat, and the structure is described in data_layout.txt.
 
-The transformed data is in the file thesaurus.json. The script parse_thesaurus.py was used for data massaging.
+The script parse_thesaurus.py was used for data transformation into a JSON file.
+
+The transformed data is in the file thesaurus.json, and an example of the structured data is below.
+```javascript
+[
+  ...,
+  {
+    "word": "wonderfully",
+    "numberOfSynonyms": 7,
+    "synonyms": ["wondrous", "wondrously", "superbly", "toppingly", "marvellously", "terrifically", "marvelously"]
+  },
+  ...
+]
+```
 ### MongoDB
 As part of the MEAN stack, MongoDB is used to import the data as a JSON array.
