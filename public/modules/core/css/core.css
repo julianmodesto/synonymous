@@ -13,3 +13,42 @@
 .ng-valid.ng-dirty {
 	border-color: #78FA89;
 }
+
+#synonymous {
+    margin: auto;
+}
+
+.synonymize {
+    display: block;
+    margin: auto;
+    width: 100%;
+    height: 250px;
+    background-color: rgba(232, 54, 23, 0.4);
+    overflow: auto;
+}
+
+#synonymize {
+    border: none;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+#synonymized {
+    
+}
+
+#synonymizeButton {
+    display: block;
+    margin: auto;
+    padding: 15px;
+}
+
+body {
+    background-color: #E80C7A;
+}
+
+.well, .jumbotron {
+    background: #E80C7A;
+}
