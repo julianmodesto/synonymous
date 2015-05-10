@@ -14,7 +14,8 @@ with open('th_en_US_v2.dat') as fp:
 			if numberOfMeanings != 0:
 				print "Unexpected error E at line {}".format(lineNumber)
 			numberOfMeanings = int(line[1])
-			thesaurusWord = {"word": word, "numberOfMeanings": numberOfMeanings, "meanings": []}
+			# thesaurusWord = {"word": word, "numberOfMeanings": numberOfMeanings, "meanings": []}
+			thesaurusWord = {"word": word, "numberOfSynonyms": 0, "synonyms": []}
 		elif len(line) == 1:
 			print "Unexpected error A at line {}".format(lineNumber)
 			word = "?"
@@ -27,18 +28,18 @@ with open('th_en_US_v2.dat') as fp:
 				# more number of meanings than expected
 				print "Unexpected error D at line {}".format(lineNumber)
 			else:
-				meaning = {
-				"partOfSpeech": "",
-				"synonyms": [],
-				"genericTerms": [],
-				"relatedTerms": [],
-				"similarTerms": [],
-				"antonyms": []
-				}
+				# meaning = {
+				# "partOfSpeech": "",
+				# "synonyms": [],
+				# "genericTerms": [],
+				# "relatedTerms": [],
+				# "similarTerms": [],
+				# "antonyms": []
+				# }
 				for item in line:
 					if item.startswith("(") and item.endswith(")"):
 						partOfSpeech = item[1:-1]
-						meaning["partOfSpeech"] = partOfSpeech
+						# meaning["partOfSpeech"] = partOfSpeech
 						continue
 					special = re.compile("(.+) \((generic term|related term|similar term|antonym)\)").split(item)
 					special = filter(None,special)
@@ -48,24 +49,27 @@ with open('th_en_US_v2.dat') as fp:
 						continue
 					elif len(special) == 1:
 						synonym = item
-						meaning["synonyms"].append(synonym)
+						# meaning["synonyms"].append(synonym)
+						if thesaurusWord["word"] != synonym:
+							thesaurusWord["numberOfSynonyms"] += 1
+							thesaurusWord["synonyms"].append(synonym)
 					elif len(special) == 2:
 						synonym = special[0]
 						synonymType = special[1]
-						if synonymType == "generic term":
-							meaning["genericTerms"].append(synonym)
-						elif synonymType == "related term":
-							meaning["relatedTerms"].append(synonym)
-						elif synonymType == "similar term":
-							meaning["similarTerms"].append(synonym)
-						elif synonymType == "antonym":
-							meaning["antonyms"].append(synonym)
-						else:
-							print "Unexpected error G at line {}".format(lineNumber)
+						# if synonymType == "generic term":
+							# meaning["genericTerms"].append(synonym)
+						# elif synonymType == "related term":
+							# meaning["relatedTerms"].append(synonym)
+						# elif synonymType == "similar term":
+							# meaning["similarTerms"].append(synonym)
+						# elif synonymType == "antonym":
+							# meaning["antonyms"].append(synonym)
+						# else:
+							# print "Unexpected error G at line {}".format(lineNumber)
 					else:
 						# probably encountered "((", "))", or something unexpected
 						print "Unexpected error C at line {}".format(lineNumber)
-				thesaurusWord["meanings"].append(meaning)
+				# thesaurusWord["meanings"].append(meaning)
 			if numberOfMeanings == 0:
 				thesaurus.append(thesaurusWord)
 
