@@ -17,7 +17,10 @@ The transformed data is in the file thesaurus.json, and an example of an array i
 }
 ```
 ### MongoDB
-As part of the MEAN stack, MongoDB is used to import the data as a JSON array.
+As part of the MEAN stack, MongoDB is used to import the data as a JSON array, as below.
+```bash
+mongoimport --db synonymous-dev --collection words --type json --jsonArray --file thesaurus.json
+```
 
 Below is an example query to return the first synonym of the word "wonderfully" from the example above.
 ```bash
