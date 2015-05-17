@@ -1,0 +1,11 @@
+<section data-ng-controller="SynonymsController" data-ng-init="findOne()">
+	<div class="page-header">
+		<h1 data-ng-bind="word.word"></h1>
+		
+	</div>
+	<small class="list-group-item-text">
+	        <ul>
+	            <li data-ng-repeat="synonym in word.synonyms">{{synonym}}</li>
+	        </ul>
+    </small>
+</section>
