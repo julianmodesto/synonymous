@@ -50,7 +50,7 @@ with open('th_en_US_v2.dat') as fp:
 					elif len(special) == 1:
 						synonym = item
 						# meaning["synonyms"].append(synonym)
-						if thesaurusWord["word"] != synonym:
+						if thesaurusWord["word"] != synonym and synonym not in thesaurusWord["synonyms"]:
 							thesaurusWord["numberOfSynonyms"] += 1
 							thesaurusWord["synonyms"].append(synonym)
 					elif len(special) == 2:
