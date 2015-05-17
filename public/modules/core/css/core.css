@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Pacifico);
+
 .content {
 	margin-top: 50px;
 }
@@ -14,10 +16,6 @@
 	border-color: #78FA89;
 }
 
-#synonymous {
-    margin: auto;
-}
-
 .synonymize {
     display: block;
     margin: auto;
@@ -27,7 +25,7 @@
     overflow: auto;
 }
 
-#synonymize {
+textarea.synonymize {
     border: none;
     outline: none;
     -webkit-box-shadow: none;
@@ -35,14 +33,25 @@
     box-shadow: none;
 }
 
-#synonymized {
-    
-}
-
-#synonymizeButton {
+input[type=submit].synonymousBrand {
+    background: transparent;
+    border: none;
+    outline: none;
     display: block;
     margin: auto;
-    padding: 15px;
+    cursor: pointer;
+    font-family: 'Pacifico', cursive;
+    font-size: 24px;
+    padding: 20px 0 20px 0;
+}
+
+input[type=submit].synonymousBrand:hover {
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
+h1.synonymousBrand {
+    font-family: 'Pacifico', cursive;
+    font-size: 72px;
 }
 
 body {
