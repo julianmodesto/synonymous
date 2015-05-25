@@ -8,7 +8,8 @@
 	
 	<div class="container-fluid">
         <div class="row">
-            <form>
+            <form
+                ng-submit="synonymous()">
             <div class="col-md-4 col-sm-4 col-xs-12">
                     <textarea
                         ng-model="synonymize"
@@ -20,7 +21,7 @@
             </div>
             </form>
             <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="synonymize synonymized" >{{synonymize}}</div>
+                    <div class="synonymize synonymized" >{{synonymized}}</div>
             </div>
         </div>
 	</div>

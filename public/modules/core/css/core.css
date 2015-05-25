@@ -21,6 +21,10 @@
     margin: auto;
     width: 100%;
     height: 250px;
+    min-height: 250px;
+    max-height: 500px;
+    min-width: 100%;
+    max-width: 100%;
     background-color: rgba(232, 54, 23, 0.4);
     overflow: auto;
 }
