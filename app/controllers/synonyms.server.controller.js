@@ -27,7 +27,7 @@ exports.synonymous = function(req, res) {
 		if (i < words.length) {
 			Word.findOne({word: words[i]}).exec(function(err, synonyms) {
 				if (err) return err;
-				if (synonyms && synonyms.numberOfSynonyms != 0) {
+				if (synonyms && synonyms.numberOfSynonyms !== 0) {
 					// Replace word with a random synonym
 					var replace = synonyms.synonyms[Math.floor(Math.random() * synonyms.synonyms.length)];
 					synonymized = synonymized.replace(new RegExp('\\b'+words[i]+'\\b', 'gi'), replace);
