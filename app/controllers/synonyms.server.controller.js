@@ -16,15 +16,21 @@ exports.read = function(req, res) {
 };
 
 exports.synonymous = function(req, res) {
-	var words = req.body.synonymize.toLowerCase().split(/\s+/);
+	var synonymized = req.body.synonymize;
+	var words = req.body.synonymize.toLowerCase().split(/\b/);
+	words.filter(function unique(value, index, self) {
+		return self.indexOf(value) === index;
+	});
+
 	// Asynch-recurse loop
 	function synonym(i, callback) {
 		if (i < words.length) {
 			Word.findOne({word: words[i]}).exec(function(err, synonyms) {
 				if (err) return err;
-				if (synonyms) {
+				if (synonyms && synonyms.numberOfSynonyms != 0) {
 					// Replace word with a random synonym
-					words[i] = synonyms.synonyms[Math.floor(Math.random() * synonyms.synonyms.length)];
+					var replace = synonyms.synonyms[Math.floor(Math.random() * synonyms.synonyms.length)];
+					synonymized = synonymized.replace(new RegExp('\\b'+words[i]+'\\b', 'gi'), replace);
 				}
 				synonym(i + 1, callback);
 			});
@@ -33,7 +39,7 @@ exports.synonymous = function(req, res) {
 		}
 	}
 	synonym(0, function() {
-		res.send({synonymized: words.join(' ')});
+		res.send({synonymized: synonymized});
 	});
 };
 
