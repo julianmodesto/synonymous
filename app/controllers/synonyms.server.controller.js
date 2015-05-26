@@ -31,7 +31,9 @@ exports.list = function(req, res) {
 };
 
 exports.synonymous = function(req, res) {
-	var words = req.body.synonymize.toLowerCase().split(' ');
+	var synonymize = req.body.synonymize.toLowerCase().split(/\s+/).join(' ');
+	var words = req.body.synonymize.toLowerCase().split(/\s+/);
+	// Asynch-recurse loop
 	function synonym(i, callback) {
 		if (i < words.length) {
 			Word.findOne({word: words[i]}).exec(function(err, synonyms) {
@@ -47,7 +49,7 @@ exports.synonymous = function(req, res) {
 		}
 	}
 	synonym(0, function() {
-		res.send({synonymize: req.body.synonymize.toLowerCase(), synonymized: words.join(' ')});
+		res.send({synonymize: synonymize, synonymized: words.join(' ')});
 	});
 };
 
@@ -67,13 +69,3 @@ exports.getSynonyms = function(req, res, next) {
 		}		
 	});
 };
-
-/**
- * Synonym authorization middleware
- */
-/*exports.hasAuthorization = function(req, res, next) {
-	if (req.synonym.user.id !== req.user.id) {
-		return res.status(403).send('User is not authorized');
-	}
-	next();
-};*/
