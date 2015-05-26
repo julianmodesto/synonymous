@@ -11,7 +11,6 @@ angular.module('core').controller('HomeController', ['$scope', '$http', '$locati
 			$http.post('/', {synonymize: $scope.synonymize}).success(function(response) {
 				// If successful we assign the response
 				$scope.synonymized = response.synonymized;
-				$scope.synonymize = response.synonymize;
 
 				// And redirect to the index page
 			}).error(function(response) {

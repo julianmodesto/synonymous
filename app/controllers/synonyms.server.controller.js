@@ -16,7 +16,6 @@ exports.read = function(req, res) {
 };
 
 exports.synonymous = function(req, res) {
-	var synonymize = req.body.synonymize.toLowerCase().split(/\s+/).join(' ');
 	var words = req.body.synonymize.toLowerCase().split(/\s+/);
 	// Asynch-recurse loop
 	function synonym(i, callback) {
@@ -34,7 +33,7 @@ exports.synonymous = function(req, res) {
 		}
 	}
 	synonym(0, function() {
-		res.send({synonymize: synonymize, synonymized: words.join(' ')});
+		res.send({synonymized: words.join(' ')});
 	});
 };
 
