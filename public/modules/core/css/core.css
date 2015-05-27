@@ -29,7 +29,6 @@
 
 textarea.synonymize {
     border: none;
-    outline: none;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
@@ -38,7 +37,6 @@ textarea.synonymize {
 input[type=submit].synonymousBrand {
     background: transparent;
     border: none;
-    outline: none;
     display: block;
     margin: auto;
     cursor: pointer;
