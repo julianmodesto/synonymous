@@ -16,6 +16,8 @@ angular.module('core').controller('HomeController', ['$scope', '$http', '$locati
 				$scope.synonymized = response.synonymized;
 
 				// And redirect to the index page
+			}).error(function(data, status) {
+			 	console.error(status, data);
 			}).finally(function () {
 				$scope.synonymizing = false;
 			});
