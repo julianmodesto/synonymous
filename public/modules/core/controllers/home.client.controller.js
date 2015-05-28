@@ -6,6 +6,8 @@ angular.module('core').controller('HomeController', ['$scope', '$http', '$locati
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
 
+		$scope.synonymizing = false;
+
 
 		$scope.synonymous = function() {
 			$scope.synonymizing = true;
@@ -16,8 +18,6 @@ angular.module('core').controller('HomeController', ['$scope', '$http', '$locati
 				// And redirect to the index page
 			}).finally(function () {
 				$scope.synonymizing = false;
-			}).error(function(response) {
-				$scope.error = response.message;
 			});
 		};
 	}
